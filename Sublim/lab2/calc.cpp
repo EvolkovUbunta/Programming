@@ -6,60 +6,32 @@ using namespace std;
 double calc(const char * str, int * status) {
 
 	double result;
-	cout << str << endl;
-	int length;
+	cout << str << endl << endl;
 	char operations[] = {'+','-','*','/','^','(',')'};//Operations
 	char number[] = {'0','1','2','3','4','5','6','7','8','9'};//Number
 	int opera[50];
-	char *numb = new char [100];
-	length=strlen(str);
-	cout << endl;
-
-
-	const char *p=strpbrk(str,operations);
-	int l=0;
-	while(p!=NULL){
-			//cout << p[0] << endl;
-			strcpy(&numb[l],p);
-			l++;
-			p=strpbrk(p+1,operations);
-	}
-
-	for(int i=0; i<l;i++)
-	cout<<numb[i];
-
-	const char *q=strpbrk(str,number);
 	int k=0;
-	while(q!=NULL){
-			//cout <<endl;
-			opera[k]=atoi(q);	
-			k++;
-			for(int i=0;;i++){
-				if(q[i] >= '0' && q[i] <='9'){
-					//cout << q[i];
-				} else {q+=i; break;}
-			}
-			q=strpbrk(q+1,number);
-			if(q==NULL) break;
-	}
-	cout << endl << endl;
-	for(int i=0; i<k;i++)
-	cout<<opera[i]<<",";
-	return result;
+	char *numb = new char [100];
 
-	/*Приоритет
-	int a_priority(char more,char less){
-       	if (more == '(') return 0;
-       	if (more == '+' || less == '-') return 1;
-       	if (more) == '^' ) return 1;
-       	if ((less == '*' || less == '/')&&(more == '*' || more == '/')) return 1;
-       return 0;
-}*/
+	const char *d = str;
+	k=0;
+	for (int i=0; i< strlen(str);){
+		if(str[i] >= '0' && str[i] <='9'){
+			cout << atoi(str+i) << endl;
+			d = strpbrk(str+i,operations);
+			i+=d-(str+i);
+	}
+		else {
+			cout<< str[i] << endl;
+			i=i+1;
+		  }
+	k++;
+	}
 }
 
 int main(){
 	int * status;
-	const char * str = "2+2+(444*4+5)-17";
+	const char * str = "1+2+(444*6+5)-17";
 	calc(str,status); 
 	return 0;
 }
