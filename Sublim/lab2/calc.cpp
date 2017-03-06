@@ -13,6 +13,12 @@ class Tokens{
 			double numb [LENGTH];
 			int ent;
 		public:
+
+			Tokens(){
+				oper[LENGTH] = 0;
+				numb[LENGTH] = 0;
+				ent = 0;
+			}
 			//Добавляем на вершину стека Number
 			int tokens_push_number(double numbe){
 				numb[ent] = numbe;
@@ -27,14 +33,25 @@ class Tokens{
 				ent++;
 				return 0;
 			}
-
 };
 
+/*class  Mycalc
+{
+public:
+	 Mycalc(const char * str, int * status);
+	~ Mycalc();
+	int calculation(){
+
+	}
+};
+*/
 
 double calc(const char * str, int * status) {
-
+//	Mycalc mycalC(str,status);
+//	mycal.calculation();
+//	return mycalC.getResault();
+	//Деление на лексемы выполненно
 	Tokens ob;
-	double result;
 	cout << str << endl << endl;
 	double opera[50];
 	char *numb = new char [100];
@@ -43,14 +60,11 @@ double calc(const char * str, int * status) {
 	for (int i=0; i< strlen(str);){
 		if(str[i] >= '0' && str[i] <='9'){
 			ob.tokens_push_number(atof(str+i));
-			cout << atof(str+i) << endl;
 			d = strpbrk(str+i,operations);
 			i+=d-(str+i);
 	}
 		else {
-			cout<< str[i] << endl;
 			i=i+1;
-			tokens_push_operations(str[i-1]);
 		  }
 	}
 }
