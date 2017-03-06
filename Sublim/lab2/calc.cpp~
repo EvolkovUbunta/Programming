@@ -70,7 +70,6 @@ double calc(const char * str, int * status) {
 }
 
 int main(){
-	//Калькулятор
 	int * status;
 	const char * str = "1.333+2+(444*6+5)-17";
 	calc(str,status); 
