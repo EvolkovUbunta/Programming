@@ -39,8 +39,7 @@ public:
 	bool skob(){
 		if(symbol[ent-1] == '(') return true;
 		else return false;
-	}
-	
+	}	
 };
 class Calculation{
 	char symbol		[LENGTH];
@@ -71,7 +70,6 @@ public:
 		}
 		return 0;
 	}
-	//Postfix zapis
 	int postfixWrite(Calculation &calc){
 		char symb;
 		StackO ob;
@@ -117,84 +115,49 @@ public:
 			if (symb == 0) break;
 			calc.tokensPushOperations(symb);
 		}
-
 	}
 	int calculation(){
-			for(int i=0 ; i<ent; i++){
+		for(int i=2 ; i<ent; i++){
 			if (strchr(operations,symbol[i])==NULL) {
 				continue;
+			} 
+			if(symbol[i] =='+'){
+				numeric[i] = numeric[i-1]+numeric[i-2];
 			}
-			if(symbol[i] =='+'){ 
-				numeric[i] = numeric[i-1]+numeric[i-2]; 
-				symbol[i] =0;
-				for(;i<ent;i++){
-					numeric[i-2]=numeric[i];
-					symbol[i-2]=symbol[i];
-				}
-				ent=ent-2;
-				i=0;
-				continue;
+			if(symbol[i] =='-'){
+				numeric[i] = numeric[i-2]-numeric[i-1];
 			}
-			if(symbol[i] =='-'){ 
-				numeric[i] = numeric[i-2]-numeric[i-1]; 
-				symbol[i] =0;
-				for(;i<ent;i++){
-					numeric[i-2]=numeric[i];
-					symbol[i-2]=symbol[i];
-				}
-				ent=ent-2;
-				i=0;
-				continue;
+			if(symbol[i] =='*'){
+				numeric[i] = numeric[i-1]*numeric[i-2];
 			}
-			if(symbol[i] =='*'){ 
-				numeric[i] = numeric[i-1]*numeric[i-2]; 
-				symbol[i] =0;
-				for(;i<ent;i++){
-					numeric[i-2]=numeric[i];
-					symbol[i-2]=symbol[i];
-				}
-				ent=ent-2;
-				i=0;
-				continue;
-			}
-			if(symbol[i] =='/'){ 
-				numeric[i] = numeric[i-2]/numeric[i-1]; 
-				symbol[i] =0;
-				for(;i<ent;i++){
-					numeric[i-2]=numeric[i];
-					symbol[i-2]=symbol[i];
-				}
-				ent=ent-2;
-				i=0;
-				continue;
-			}
+			if(symbol[i] =='/'){
+				numeric[i] = numeric[i-2]/numeric[i-1];
+			} 
 			if(symbol[i] =='^'){ 
-				numeric[i] = pow(numeric[i-2],numeric[i-1]); 
-				symbol[i] =0;
+				numeric[i] = pow(numeric[i-2],numeric[i-1]);
+			} 	 
+				symbol[i]=0;
 				for(;i<ent;i++){
 					numeric[i-2]=numeric[i];
 					symbol[i-2]=symbol[i];
 				}
 				ent=ent-2;
-				i=0;
-				continue;
-			}
+				i=1;
 		}
 		double result =0;
 		result = numeric[0];
 		return result;
 	}
-
 	void show(){
 		for( int i = 0; i < ent ; i++){
 			if(symbol[i] == 0){
 				cout << numeric[i] << endl << endl;
 			} else {
-				cout << symbol[i] << endl << endl;			}
+				cout << symbol[i] << endl << endl;			
+			  }
 		}
 	}
 };
-
 double calc(const char * str, int * status) {
 		Calculation calc;
 		double opera[50];
@@ -217,18 +180,19 @@ double calc(const char * str, int * status) {
 		}
 		Calculation postCal;
 		calc.postfixWrite(postCal);
-		cout << "POSTFIX WRITE: "<< endl;
-		postCal.show();
+		//cout << "POSTFIX WRITE: "<< endl;
+		//postCal.show();
 		postCal.calculation();
 		(*status) = 0;
 }
-
 int main(){
 	int * status;
 	const char * str = "(22+4)^2+22";
-	cout << strlen(str) << "|" << "EXPRESSION: "<< str << endl << endl;
+	cout << "-----------------------------------------------------------"<< endl;
+	cout << "EXPRESSION: "<< str << endl << endl;
 	double result;
 	result=calc(str,status); 
-	cout << "ANSVER: " <<result << endl;
+	cout << "\t\t\t\t\tANSVER: " <<result << endl;
+	cout << "-----------------------------------------------------------"<< endl;
 	return 0;
 }
