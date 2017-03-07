@@ -16,6 +16,7 @@ class Tokens{
 	public:
 
 		Tokens(){
+			opera[20] = 0;
 			oper[LENGTH] = 0;
 			numb[LENGTH] = 0;
 			ent = 0;
@@ -59,6 +60,21 @@ class Tokens{
 			return 0;
 		}
 		
+		int operations_push(Tokens &Topera,char opera){
+			if (strchr(operations,opera) == NULL) return 1;
+			Topera.oper[Topera.ent] = opera;
+			Topera.ent++;
+			return 0;
+		}
+
+		char operations_pop(Tokens &Topera){
+			Topera.oper[Topera.ent]=0;
+			--Topera.ent;
+			if(Topera.ent < 0) {
+				Topera.ent = 0;
+			}
+			return oper[ent];
+		}
 		int postfix_write (Tokens &Tpost){
 			Tokens Topera;
 			int i;
@@ -72,6 +88,61 @@ class Tokens{
 					Topera.tokens_push_operations(oper[i]);
 					continue;
 				}
+				//Если операций в стеке нет
+				if (ent == 0){
+					Topera.operations_push(Topera,oper[i]);
+					continue;
+				}
+				//Если (
+				if (oper[i] == '('){
+					Topera.operations_push(Topera,'(');
+					continue;
+				}	
+				//Если видим )
+				if (oper[i] == ')')
+				{
+					while(1){
+					//oper = Topera.operations_pop(Topera);
+						if (oper[i]=='('){
+							break;
+						}
+					Tpost.tokens_push_operations(oper[i]);
+					}
+					continue;
+				}
+
+				if (oper[ent-1] == '('){
+					Topera.operations_push(Topera,oper[i]);
+					continue;
+				}
+
+				else{
+					if(prioryty(oper[ent -1], oper[i])){
+						Tpost.tokens_push_operations(operations_pop(Topera));
+						i--;
+					}
+
+					else{
+						Topera.operations_push(Topera,oper[i]);
+					}
+				}
+			}
+
+			while(1){
+				//oper=Topera.operations_pop(Topera);
+				if(oper==0) {
+					break;
+				}
+				tokens_push_operations(oper[i]);
+			}
+
+			for(int i=0; i < Tpost.ent;i++){
+				if(Tpost.oper == 0){
+					cout<< Tpost.numb[i] << endl;
+				}
+				else{ 
+					cout << Tpost.oper[i] << endl;
+				}
 			}
 		}
 };
@@ -79,7 +150,7 @@ class Tokens{
 
 double calc(const char * str, int * status) {
 		
-		Tokens ob;
+		Tokens ob,Tpost;
 		double opera[50];
 		char *numb = new char [100];
 		int k=0;
@@ -95,7 +166,7 @@ double calc(const char * str, int * status) {
 				i=i+1;
 			  }
 		}
-
+		ob.postfix_write(Tpost);
 }
 
 int main(){
