@@ -6,6 +6,14 @@
 
 using namespace std;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+double calc(const char * str, int * status);
+#ifdef __cplusplus
+}
+#endif
+
 const char operations[7] = {'+','-','*','/','^','(',')'};//Operations
 const char number[10] = {'0','1','2','3','4','5','6','7','8','9'};//Number
 
