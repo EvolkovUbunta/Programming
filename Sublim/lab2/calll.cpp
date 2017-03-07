@@ -136,7 +136,7 @@ public:
 				continue;
 			}
 			if(symbol[i] =='-'){ 
-				numeric[i] = numeric[i-1]-numeric[i-2]; 
+				numeric[i] = numeric[i-2]-numeric[i-1]; 
 				symbol[i] =0;
 				for(;i<ent;i++){
 					numeric[i-2]=numeric[i];
@@ -158,7 +158,7 @@ public:
 				continue;
 			}
 			if(symbol[i] =='/'){ 
-				numeric[i] = numeric[i-1]/numeric[i-2]; 
+				numeric[i] = numeric[i-2]/numeric[i-1]; 
 				symbol[i] =0;
 				for(;i<ent;i++){
 					numeric[i-2]=numeric[i];
@@ -169,7 +169,7 @@ public:
 				continue;
 			}
 			if(symbol[i] =='^'){ 
-				numeric[i] = pow(numeric[i-1],numeric[i-2]); 
+				numeric[i] = pow(numeric[i-2],numeric[i-1]); 
 				symbol[i] =0;
 				for(;i<ent;i++){
 					numeric[i-2]=numeric[i];
@@ -188,10 +188,9 @@ public:
 	void show(){
 		for( int i = 0; i < ent ; i++){
 			if(symbol[i] == 0){
-				cout << numeric[i] << endl;
+				cout << numeric[i] << endl << endl;
 			} else {
-				cout << symbol[i] << endl;
-			}
+				cout << symbol[i] << endl << endl;			}
 		}
 	}
 };
@@ -209,22 +208,27 @@ double calc(const char * str, int * status) {
 				i+=d-(str+i);
 			}
 			else {
+				while(str[i] == str [i+1]){
+					i++;
+				}
 				calc.tokensPushOperations(str[i]);
 				i=i+1;
-			  }
+			}
 		}
 		Calculation postCal;
 		calc.postfixWrite(postCal);
+		cout << "POSTFIX WRITE: "<< endl;
 		postCal.show();
 		postCal.calculation();
+		(*status) = 0;
 }
 
 int main(){
 	int * status;
-	const char * str = "2*2.3+(4+5))";
-	cout << str << endl << endl;
+	const char * str = "(22+4)^2+22";
+	cout << strlen(str) << "|" << "EXPRESSION: "<< str << endl << endl;
 	double result;
 	result=calc(str,status); 
-	cout << result << endl;
+	cout << "ANSVER: " <<result << endl;
 	return 0;
 }
