@@ -6,11 +6,9 @@ using namespace std;
 
 class La{
   char si;
-  int poz,line,column;
 public:
   La(){
     si=0;
-    poz=line=column=0;
   }
 // Функции транслитератора, используемые для определения класса лексем
 //
