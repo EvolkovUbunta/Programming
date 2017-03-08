@@ -1,0 +1,4 @@
+base:cp1251
+1) from koi to cp1251
+2) from cp866 to koi
+Æ ¾¶‹º¢¸ º¼ ‰‹Š©Š ‹¸ ¤ …º  ¹‹¥ €¢¹ ‰ºŽ. Õ±ˆ   º º¼   ˆŠ±Ž ª   ¹Œ    ¾ ‹º¹»‹‚. £ª Ù »   €Š¯!!! ¢»¢ ±Š ÜÜˆŠ±Ž Š»‹¢ ±¢¥ ¤€  ±Š ¾¹ ˆº Œ
