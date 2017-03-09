@@ -1,3 +1,15 @@
+/**
+	Калькулятор(программа) работает исключительно с операциями 
+	'+','-','*','/','^','(',')' 
+	(давать программе строчку типа 2 ? 2 строго запрещено), 
+	А так же с  числами
+	'0','1','2','3','4','5','6','7','8','9'.
+	Имеется проверка на повторяющиеся операции в выражении, 
+	Что в свою очередь позволяет корректно подсчитать 
+	2++2 или же 2+2+(4**4).
+	В обоих случаях результат выполнения программы 
+	Будет верным и на выходе мы ,соответственно, получим, 4 или же 20. 
+*/
 #include <iostream>
 #include <string.h>
 #include <math.h>
@@ -56,8 +68,8 @@ class Calculation{
 public:
 	Calculation(){
 		for(int i=0; i < LENGTH; i++){
-		symbol[i] = 0;
-		numeric[i]= 0;
+			symbol[i] = 0;
+			numeric[i]= 0;
 		}
 		ent = 0;
 	}
@@ -85,15 +97,15 @@ public:
 		for(i=0;i < ent; i++){
 			if(symbol[i] == 0){
 				calc.tokensPushNumber(numeric[i]);
-				continue;
+			continue;
 			}
 			if(ob.size() ==0){
 				ob.pushSymbol(symbol[i]);
-				continue;
+			continue;
 			}
 			if(symbol[i] == '('){
 				ob.pushSymbol('(');
-				continue;
+			continue;
 			}
 			if (symbol[i] == ')'){
 				while(1){
@@ -103,11 +115,11 @@ public:
 					}
 					calc.tokensPushOperations(symb);
 				}
-				continue;
+			continue;
 			}
 			if (ob.skob()){
 				ob.pushSymbol(symbol[i]);
-				continue;
+			continue;
 			} else {
 				if (ob.aPtiority (symbol[i])){
 					calc.tokensPushOperations(ob.PopSymbol());
@@ -120,7 +132,9 @@ public:
 		}
 		while (1){
 			symb = ob.PopSymbol ();
-			if (symb == 0) break;
+			if (symb == 0) {
+				break;
+			}
 			calc.tokensPushOperations(symb);
 		}
 	}
