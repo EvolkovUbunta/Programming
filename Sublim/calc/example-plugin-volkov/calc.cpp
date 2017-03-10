@@ -1,14 +1,12 @@
 /**
 	Калькулятор(программа) работает исключительно с операциями 
 	'+','-','*','/','^','(',')' 
-	(давать программе строчку типа 2 ? 2 строго запрещено), 
+	(давать программе строчку типа 2 ? 2 запрещено), 
 	А так же с  числами
 	'0','1','2','3','4','5','6','7','8','9'.
-	Имеется проверка на повторяющиеся операции в выражении, 
-	Что в свою очередь позволяет корректно подсчитать 
-	2++2 или же 2+2+(4**4).
-	В обоих случаях результат выполнения программы 
-	Будет верным и на выходе мы ,соответственно, получим, 4 или же 20. 
+	!!! Tолько с положительными числами. 
+		(-1, -2 , -3 - нельзя)
+	Возвратит status = 0 (ERRORE), если 2+2(
 */
 #include <iostream>
 #include <string.h>
@@ -90,11 +88,10 @@ public:
 		}
 		return 0;
 	}
-	int postfixWrite(Calculation &calc){
+	int postfixWrite(Calculation &calc,int * status){
 		char symb;
 		StackO ob;
-		int i=-1;
-		for(i=0;i < ent; i++){
+		for(int i=0;i < ent; i++){
 			if(symbol[i] == 0){
 				calc.tokensPushNumber(numeric[i]);
 			continue;
@@ -109,6 +106,10 @@ public:
 			}
 			if (symbol[i] == ')'){
 				while(1){
+					if (ob.size() == 1){
+						(*status) = 1;
+						return 0.0;
+					}
 					symb = ob.PopSymbol();
 					if (symb == '('){
 						break;
@@ -136,11 +137,12 @@ public:
 				break;
 			}
 			calc.tokensPushOperations(symb);
+
 		}
 	}
-	int calculation(){
+	int calculation(int *status){
 		for(int i=2 ; i<ent; i++){
-			if (strchr(operations,symbol[i])==NULL) {
+			if (symbol[i]==0) {
 				continue;
 			} 
 			if(symbol[i] =='+'){
@@ -158,15 +160,16 @@ public:
 			if(symbol[i] =='^'){ 
 				numeric[i] = pow(numeric[i-2],numeric[i-1]);
 			} 	 
-				symbol[i]=0;
-				for(;i<ent;i++){
-					numeric[i-2]=numeric[i];
-					symbol[i-2]=symbol[i];
-				}
-				ent=ent-2;
-				i=1;
+			symbol[i]=0;
+			for(;i<ent;i++){
+				numeric[i-2]=numeric[i];
+				symbol[i-2]=symbol[i];
+			}
+			ent=ent-2;
+			i=1;
 		}
-		double result =0;
+		(*status) = 0;
+		double result;
 		result = numeric[0];
 		return result;
 	}
@@ -182,9 +185,6 @@ public:
 };
 double calc(const char * str, int * status) {
 		Calculation calc;
-		double opera[50];
-		char *numb = new char [100];
-		int k=0;
 		const char *d = str;
 		for (int i=0; i< strlen(str);){
 			if(str[i] >= '0' && str[i] <='9'){
@@ -193,17 +193,11 @@ double calc(const char * str, int * status) {
 				i+=d-(str+i);
 			}
 			else {
-				while(str[i] == str [i+1]){
-					i++;
-				}
 				calc.tokensPushOperations(str[i]);
 				i=i+1;
 			}
 		}
 		Calculation postCal;
-		calc.postfixWrite(postCal);
-		//cout << "POSTFIX WRITE: "<< endl;
-		//postCal.show();
-		postCal.calculation();
-		(*status) = 0;
+		calc.postfixWrite(postCal,status);
+		postCal.calculation(status); 
 }

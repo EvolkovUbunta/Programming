@@ -70,7 +70,7 @@ public:
 		}
 		return 0;
 	}
-	int postfixWrite(Calculation &calc){
+	int postfixWrite(Calculation &calc, int *status){
 		char symb;
 		StackO ob;
 		int i=-1;
@@ -89,6 +89,11 @@ public:
 			}
 			if (symbol[i] == ')'){
 				while(1){
+					if (ob.size() == 0){
+						(*status) = 1;
+						cout << "status: " <<status << endl;
+						return 0.0;
+					}
 					symb = ob.PopSymbol();
 					if (symb == '('){
 						break;
@@ -118,7 +123,7 @@ public:
 	}
 	int calculation(){
 		for(int i=2 ; i<ent; i++){
-			if (strchr(operations,symbol[i])==NULL) {
+			if (symbol[i]==0) {
 				continue;
 			} 
 			if(symbol[i] =='+'){
@@ -136,13 +141,16 @@ public:
 			if(symbol[i] =='^'){ 
 				numeric[i] = pow(numeric[i-2],numeric[i-1]);
 			} 	 
-				symbol[i]=0;
-				for(;i<ent;i++){
-					numeric[i-2]=numeric[i];
-					symbol[i-2]=symbol[i];
-				}
-				ent=ent-2;
-				i=1;
+			cout << symbol[i] << endl;
+			symbol[i]=0;
+			cout << numeric[i] << endl;
+
+			for(;i<ent;i++){
+				numeric[i-2]=numeric[i];
+				symbol[i-2]=symbol[i];
+			}
+			ent=ent-2;
+			i=1;
 		}
 		double result =0;
 		result = numeric[0];
@@ -179,19 +187,20 @@ double calc(const char * str, int * status) {
 			}
 		}
 		Calculation postCal;
-		calc.postfixWrite(postCal);
-		//cout << "POSTFIX WRITE: "<< endl;
-		//postCal.show();
+		calc.postfixWrite(postCal,status);
+		cout << "POSTFIX WRITE: "<< endl;
+		postCal.show();
 		postCal.calculation();
 		(*status) = 0;
+		
 }
 int main(){
 	int * status;
-	const char * str = "(22+4)^2+22";
+	const char * str = "2^2+(4*4+11))(";
 	cout << "-----------------------------------------------------------"<< endl;
 	cout << "EXPRESSION: "<< str << endl << endl;
 	double result;
-	result=calc(str,status); 
+	result=calc(str,status);
 	cout << "\t\t\t\t\tANSVER: " <<result << endl;
 	cout << "-----------------------------------------------------------"<< endl;
 	return 0;
