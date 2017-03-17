@@ -1,6 +1,7 @@
 CC=gcc
 LD=gcc
 CXX=g++
+C_FLAGS=-O0 -g
 
 TARGET=calc
 
@@ -12,10 +13,10 @@ $(TARGET): $(OBJS)
 	$(LD) $(OBJS) -o $(TARGET) -ldl
 
 %.o: %.c
-	$(CC) -c $^
+	$(CC) $(C_FLAGS) -c $^
 
 %.o: %.cpp
-	$(CXX) -c $^
+	$(CXX) $(C_FLAGS) -c $^
 
 clean:
 	rm -rf $(TARGET) $(OBJS)

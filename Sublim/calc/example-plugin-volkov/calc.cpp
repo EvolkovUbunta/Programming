@@ -6,7 +6,7 @@
 	'0','1','2','3','4','5','6','7','8','9'.
 	!!! Tолько с положительными числами. 
 		(-1, -2 , -3 - нельзя)
-	Возвратит status = 0 (ERRORE), если 2+2(
+	Возвратит status = 0 , если 2+2(
 */
 #include <iostream>
 #include <string.h>
@@ -31,6 +31,12 @@ class StackO{
 	char symbol[30];
 	int ent;
 public:
+	StackO(){
+		for (int i=0;i<30;i++){
+			symbol[i] = 0;
+		}
+		ent = 0;
+	}
 	int aPtiority(char litle){
 		if (litle == '+' || litle == '-') return 1;
 		if (symbol[ent-1] == '^') return 1;
@@ -91,7 +97,8 @@ public:
 	int postfixWrite(Calculation &calc,int * status){
 		char symb;
 		StackO ob;
-		for(int i=0;i < ent; i++){
+		int i=-1;
+		for(i=0;i < ent; i++){
 			if(symbol[i] == 0){
 				calc.tokensPushNumber(numeric[i]);
 			continue;
@@ -106,9 +113,9 @@ public:
 			}
 			if (symbol[i] == ')'){
 				while(1){
-					if (ob.size() == 1){
-						(*status) = 1;
-						return 0.0;
+					if (ob.size()==0){
+						*status = 1;
+						return 0;
 					}
 					symb = ob.PopSymbol();
 					if (symb == '('){
@@ -173,6 +180,20 @@ public:
 		result = numeric[0];
 		return result;
 	}
+	void inficsWrite(const char * str){
+		const char *d = str;
+		for (int i=0; i< strlen(str);){
+			if(str[i] >= '0' && str[i] <='9'){
+				tokensPushNumber(atof(str+i));
+				d = strpbrk(str+i,operations);
+				i+=d-(str+i);
+			}
+			else {
+				tokensPushOperations(str[i]);
+				i=i+1;
+			}
+		}
+	}
 	void show(){
 		for( int i = 0; i < ent ; i++){
 			if(symbol[i] == 0){
@@ -185,19 +206,8 @@ public:
 };
 double calc(const char * str, int * status) {
 		Calculation calc;
-		const char *d = str;
-		for (int i=0; i< strlen(str);){
-			if(str[i] >= '0' && str[i] <='9'){
-				calc.tokensPushNumber(atof(str+i));
-				d = strpbrk(str+i,operations);
-				i+=d-(str+i);
-			}
-			else {
-				calc.tokensPushOperations(str[i]);
-				i=i+1;
-			}
-		}
 		Calculation postCal;
+		calc.inficsWrite(str);
 		calc.postfixWrite(postCal,status);
 		postCal.calculation(status); 
 }

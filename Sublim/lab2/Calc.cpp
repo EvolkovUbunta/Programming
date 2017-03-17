@@ -13,6 +13,9 @@ class StackO{
 	char symbol[30];
 	int ent;
 public:
+	StackO(){
+		ent = 0;
+	}
 	int aPtiority(char litle){
 		if (litle == '+' || litle == '-') return 1;
 		if (symbol[ent-1] == '^') return 1;
@@ -73,13 +76,14 @@ public:
 	int postfixWrite(Calculation &calc, int *status){
 		char symb;
 		StackO ob;
-		int i=-1;
-		for(i=0;i < ent; i++){
+		for(int i=0;i < ent; i++){
+			//cout << "DDDD"<<endl;
 			if(symbol[i] == 0){
 				calc.tokensPushNumber(numeric[i]);
 				continue;
 			}
 			if(ob.size() ==0){
+				cout << "ZZZZ"<<endl;
 				ob.pushSymbol(symbol[i]);
 				continue;
 			}
@@ -89,11 +93,7 @@ public:
 			}
 			if (symbol[i] == ')'){
 				while(1){
-					if (ob.size() == 0){
-						(*status) = 1;
-						cout << "status: " <<status << endl;
-						return 0.0;
-					}
+
 					symb = ob.PopSymbol();
 					if (symb == '('){
 						break;
@@ -121,7 +121,7 @@ public:
 			calc.tokensPushOperations(symb);
 		}
 	}
-	int calculation(){
+	double calculation(){
 		for(int i=2 ; i<ent; i++){
 			if (symbol[i]==0) {
 				continue;
@@ -168,9 +168,6 @@ public:
 };
 double calc(const char * str, int * status) {
 		Calculation calc;
-		double opera[50];
-		char *numb = new char [100];
-		int k=0;
 		const char *d = str;
 		for (int i=0; i< strlen(str);){
 			if(str[i] >= '0' && str[i] <='9'){
@@ -179,9 +176,6 @@ double calc(const char * str, int * status) {
 				i+=d-(str+i);
 			}
 			else {
-				while(str[i] == str [i+1]){
-					i++;
-				}
 				calc.tokensPushOperations(str[i]);
 				i=i+1;
 			}
@@ -196,7 +190,7 @@ double calc(const char * str, int * status) {
 }
 int main(){
 	int * status;
-	const char * str = "2^2+(4*4+11))(";
+	const char * str = "2+2.2";
 	cout << "-----------------------------------------------------------"<< endl;
 	cout << "EXPRESSION: "<< str << endl << endl;
 	double result;

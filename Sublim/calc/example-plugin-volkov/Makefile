@@ -1,6 +1,7 @@
 CC=gcc
 LD=g++
 CXX=g++
+C_FLASGS=-O0 -g
 
 TARGET=libexample-plugin-2.so
 
@@ -12,10 +13,10 @@ $(TARGET): $(OBJS)
 	$(LD) --shared $(OBJS) -o $(TARGET)
 
 %.o: %.c
-	$(CC) -fPIC -c $^
+	$(CC) $(C_FLAGS) -fPIC -c $^
 
 %.o: %.cpp
-	$(CXX) -fPIC -c $^
+	$(CXX) $(C_FLAGS) -fPIC -c $^
 
 clean:
 	rm -rf $(TARGET) $(OBJS)
