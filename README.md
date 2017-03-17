@@ -1,5 +1,5 @@
 # Programming
-Лабы по предмету"Структуры данных"
-НГТУ им. Р.Е. Алексеева
-И не только это
-В общем, очень интересно все тут
+  # Programming
+    # Programming
+  # Programming
+# Programming
