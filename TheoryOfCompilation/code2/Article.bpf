@@ -1,0 +1,7 @@
+USEUNIT("Source\Main.cpp");
+USEUNIT("Source\Utils.cpp");
+USEUNIT("Source\Lexer.cpp");
+//---------------------------------------------------------------------------
+This file is used by the project manager only and should be treated like the project file
+
+main

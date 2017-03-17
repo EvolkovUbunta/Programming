@@ -1,0 +1,23 @@
+%this is comment
+Randomize();
+
+int answ, done = 0, num = Random(1, 100);%this is comment
+Write("Guess a number between 1 and 100 I thought!" + Char(10));
+
+while(done ~ 0)
+{
+    Write("I think it is "); answ = StrToInt(ReadString());
+    if(answ > num)
+        Write("No! It's less!");
+    else if(answ < num)
+             Write("No! It's bigger!");
+         else
+         {
+             Write("Yes! You've done it! Congratulations!");
+             done = 1;
+         }
+%this is comment
+%this is comment
+  Write(Char(10));
+}
+end;

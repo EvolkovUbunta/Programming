@@ -1,0 +1,25 @@
+
+*** These modified files were found in JOE when it aborted on Fri Mar 17 14:19:48 2017
+*** JOE was aborted because the terminal closed
+
+*** Файл '(БезИмени)'
+calc.cpp
+calc.cpp
+Makefile
+calc.cpp
+lab1.cpp
+file.txt
+file.txt
+file.txt
+hello.txt
+file.txt
+lexprog
+
+*** Файл '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc
+
+*** These modified files were found in JOE when it aborted on Fri Mar 17 16:10:52 2017
+*** JOE was aborted by UNIX signal 1
