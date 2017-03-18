@@ -23,7 +23,7 @@ for k in range(1,501):# 500 итераций
     x2elem=x1*complex(math.cos(fi) ,math.sin(fi))
     fi=2*math.pi*d_lambda*math.sin(math.pi/180.0*45) 
     x2elem=x2elem+x2*complex(math.cos(fi) ,math.sin(fi))
-# x2elem - значения суммы помех в  третьем антенном элементе
+    # x2elem - значения суммы помех в  третьем антенном элементе
     fi=2*2*math.pi*d_lambda*math.sin(math.pi/180.0*30) 
     x3elem=x1*complex(math.cos(fi) ,math.sin(fi))
     fi=2*2*math.pi*d_lambda*math.sin(math.pi/180.0*45) 
