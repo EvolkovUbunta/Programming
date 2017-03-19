@@ -63,31 +63,36 @@ bool inline isIgnore(int ch) {
 
 int file(char * namefile){
 	char str;
-	int line=0;
-	int column =0;
-	int poz=0;
+  int mass[256];
+  for(int i = 0; i < 256; i++){
+    mass[i] = 0;
+  }
+	unsigned char kstr;
 	ifstream fin(namefile);
 	if(!fin){
 		cout << "A file with that name does not exist." << endl;
 		return 1;
 	}
-	while(!fin.eof()){
-		if((str=fin.get())=='\n'){
-			++line;
-			column = 0;
-		} else ++column;
-		++poz;
-		if(isLetter(str)){
-		
-			return 1;
-		}
-		if(fin.eof()){
-			break;
-		}
-	cout << str;
-	} 
-	cout << endl;
+	while(true){
+		fin.get(str);
+      if(fin.eof()){
+        break;
+      }
+      kstr = (unsigned char)str;
+      mass[kstr]++;
+  }
+  
+  for(int i = 0; i < 256; i++){
+      if(mass[i] == 0){
+        continue;
+      }
+      if(isLetter(str)){
+      mass[i]++;
+      }
+      cout << mass[i];
+  }
 }
+
 int main(int argc, char *argv[1]){
 	if(argc!=2){
 			cout << "At the command prompt, you must enter the file name." << endl;

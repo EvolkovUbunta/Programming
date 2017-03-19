@@ -1,0 +1,26 @@
+O -> A 
+O -> O O 
+A -> M ; 
+A -> { O } 
+A -> while V A 
+A -> for ( j* = E ; V ; M ) A 
+A -> if ( V ) A 
+A -> if ( V ) A else A 
+M -> j* x* E 
+M -> j* ++ 
+M -> j* -- 
+M -> ++ j* 
+M -> -- j* 
+V -> ( E b* E ) 
+V -> ( V l* V ) 
+V -> E b* E 
+V -> V l* V 
+E -> T + E 
+E -> E - T 
+E -> T 
+T -> F + T 
+T -> T / F 
+T -> F 
+F -> ( E ) 
+F -> j* 
+F -> c* 

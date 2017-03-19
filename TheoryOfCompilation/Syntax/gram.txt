@@ -1,0 +1,34 @@
+26
+
+O A_
+O O_O_
+
+A M_r0
+A q0O_q1
+A k0V_A_
+A k3s0j*x0E_r0V_r0M_s1A_
+A k1s0V_s1A_
+A k1s0V_s1A_k2A_
+
+M j*x*E_
+M j*p0
+M j*p1
+M p0j*
+M p1j*
+
+V s0E_b*E_s1
+V s0V_l*V_s1 
+V E_b*E_
+V V_l*V_  
+
+E T_a0E_
+E E_a1T_
+E T_
+
+T F_a2T_
+T T_a3F_
+T F_
+
+F s0E_s1
+F j*
+F c*

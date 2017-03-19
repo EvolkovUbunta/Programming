@@ -14,10 +14,6 @@
 \-			printf("SUBTRACTION");
 \<			printf("ARROW_L");
 \>			printf("ARROW_R");
-\|			printf("DIRECT_SLASH");
-\*			printf("STAR");
-\#			printf("LATTICE");
-\'			printf("SINGLE_QUOTATION");
 ;                       printf("SEMICOLON ");
 \n                      printf("\n");
 [ \t]+                  /* игнорируем пробелы и знаки табуляции */;

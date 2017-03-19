@@ -1,0 +1,45 @@
+O -> O O 
+O -> A 
+A -> while V A 
+A -> M ; 
+M -> a /= E 
+E -> T 
+T -> F 
+F -> 20 
+V -> ( E < E ) 
+E -> T 
+T -> F 
+F -> d 
+E -> T 
+T -> F 
+F -> i 
+O -> A 
+A -> for ( i = E ; V ; M ) A 
+A -> { O } 
+O -> A 
+A -> if ( V ) A 
+A -> { O } 
+O -> A 
+A -> M ; 
+M -> b = E 
+E -> T 
+T -> F 
+F -> a 
+V -> E == E 
+E -> T 
+T -> F 
+F -> b 
+E -> T 
+T -> F 
+F -> a 
+M -> i ++ 
+V -> E < E 
+E -> T 
+T -> F 
+F -> n 
+E -> T 
+T -> F 
+F -> i 
+E -> T 
+T -> F 
+F -> 10 
