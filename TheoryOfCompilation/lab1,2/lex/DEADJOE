@@ -23,3 +23,6 @@ Finished processing /etc/joe/joerc
 
 *** These modified files were found in JOE when it aborted on Fri Mar 17 16:10:52 2017
 *** JOE was aborted by UNIX signal 1
+
+*** These modified files were found in JOE when it aborted on Sun Mar 19 16:15:17 2017
+*** JOE was aborted because the terminal closed

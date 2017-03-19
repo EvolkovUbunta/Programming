@@ -74,7 +74,7 @@ public:
 			for(int i=0;i<128;++i){
 				if(mass[i]>mass[popular]){
 					popular = i;
-				}
+				
 			}
 		}
 		fin_i.close();
@@ -169,7 +169,7 @@ public:
 		return 0;
 	}
 	/**
-	Функция, определяющая, как был перекожирован текст.
+	Функция, определяющая, как был перекодирован текст.
 	В соответствии с какой таблицей. 
 	---
 	The function that determines how the text was perekozhirovan.

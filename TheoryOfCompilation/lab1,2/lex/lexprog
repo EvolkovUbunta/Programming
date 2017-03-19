@@ -8,12 +8,6 @@
 \"                      printf("QUOTE ");
 \{                      printf("OBRACE ");
 \}                      printf("EBRACE ");
-\(			printf("SKOB_L");
-\)			printf("SKOB_R");
-\+			printf("ADDITION");
-\-			printf("SUBTRACTION");
-\<			printf("ARROW_L");
-\>			printf("ARROW_R");
 ;                       printf("SEMICOLON ");
 \n                      printf("\n");
 [ \t]+                  /* игнорируем пробелы и знаки табуляции */;
