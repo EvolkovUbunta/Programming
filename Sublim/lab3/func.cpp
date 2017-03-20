@@ -11,8 +11,8 @@ List::List(){
 }
 
 List::List(unsigned char i, uint32_t mass){
-	i = i;
-	mass = mass;
+	pstr = i;
+	array = mass;
 }
 
 int Huffman::makeFile(ifstream &fin){
