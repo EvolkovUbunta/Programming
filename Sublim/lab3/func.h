@@ -1,22 +1,33 @@
 #include <iostream>
 #include <fstream>
 #include <inttypes.h>
+#include <iomanip>
+#include <math.h>
 #include <list>
 
 using namespace std;
 
-class Huffman{
-	uint32_t mass[256];
+class ListNode{
+	unsigned char pstr;
+	uint32_t entering;
+	ListNode *left,*rigth;
 public:
-	Huffman();
-	int makeFile(ifstream &fin);
+	ListNode(unsigned char P, uint32_t E);
+	ListNode(ListNode* lef, ListNode* rig);
+	ListNode(const ListNode &ob);
+	ListNode();
+	int operator > (ListNode ob);
+	ListNode& operator = (ListNode& ob);
 };
 
-class List{
-	uint32_t array;
-	unsigned char pstr;
+class Huffman{
+	uint32_t entering[256];
+	unsigned short pstr;
+	ListNode *big;
 public:
-	List(unsigned char i, uint32_t mass);
-	List();
-	friend ostream & operator << (ostream &stream, List ob); 
+	Huffman();
+	std::list <ListNode>::iterator min (std::list <ListNode> &list);
+	void run(ifstream & finI, ofstream & finO);
+	void Entering(ifstream & fin);
+	void Tree();
 };

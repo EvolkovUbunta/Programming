@@ -4,12 +4,15 @@
 
 using namespace std;
 
-int main(int argc, char * argv[]){
-	Huffman huff;
-	ifstream fin("file.txt");
-	if (!fin){
+int main(int argc, char *argv[]){
+	Huffman stream;
+	ifstream finI("file.txt");
+	ofstream finO("result.txt");
+	if (!finI){
 		return 1;
 	}
-	huff.makeFile(fin);
+	stream.run(finI,finO);
+	finI.close();
+	finO.close();
 	return 0;
 }

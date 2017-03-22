@@ -1,2 +1,2 @@
 all:
-	g++ func.cpp main.cpp -o myprog
+	g++  main.cpp ListNode.cpp Huffman.cpp -o myprog
