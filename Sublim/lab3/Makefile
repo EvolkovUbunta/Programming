@@ -1,2 +1,2 @@
 all:
-	g++  main.cpp HuffmanConstructor.cpp HuffmanEntering.cpp HuffmanIteratorMin.cpp HuffmanRun.cpp HuffmanTree.cpp HuffmanWriteFile.cpp ListNodeConstructor.cpp ListNodeOperator.cpp ListNodeRecursiveCodingFunction.cpp -o myprog
+	g++  main.cpp Huffman.cpp ListNode.cpp -o myprog

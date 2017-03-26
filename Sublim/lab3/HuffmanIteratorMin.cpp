@@ -1,4 +1,4 @@
-#include "func.h"
+#include "HUFF.h"
 
 std::list <ListNode>::iterator Huffman::min (std::list <ListNode> &list){
 	

@@ -1,17 +1,10 @@
-#include "func.h"
+#include "HUFF.h"
 
 void Huffman::Tree(){
-	
 	list <ListNode> les;
-	ListNode ob;
 	unsigned short k;
-	pstr = 0;
 	for(k = 0; k < 256; k++){
-		if (entering[k] == 0){
-			continue;
-		}
-		pstr++;
-		les.push_back (ListNode(k,entering[k]));//Помещаем лес в list
+		les.push_back (ListNode(k,entering[k]));
 	}
 	std::list <ListNode>::iterator A;
 	std::list <ListNode>::iterator B;
@@ -29,5 +22,4 @@ void Huffman::Tree(){
 			break;
 		}
 	}
-
 }

@@ -8,10 +8,10 @@
 #include <map>
 
 using namespace std;
-
+class Huffman;
 class Code{
 public:
-	uint32_t code;
+	unsigned char code;
 	unsigned char size;
 	Code(uint32_t cod, unsigned char siz){
 		code = cod;
@@ -31,8 +31,9 @@ public:
 	int operator > (ListNode ob);
 	ListNode& operator = (ListNode& ob);
 	int recursiveCodingFunction(Code bit, std::vector<Code> &CodeBit,unsigned char (&k)[256]);
+	friend Huffman;
 };
-
+//классы друзья должны быть
 class Huffman{
 	std::vector<Code> CodeBit;
 	unsigned char k[256];
@@ -49,5 +50,6 @@ public:
 	void Entering(ifstream & fin);
 	void Tree();
 	void writeFile(ifstream & finI, ofstream & finO);
+	int unpac(ifstream & fin_I, ofstream & fin_O);
 };
 

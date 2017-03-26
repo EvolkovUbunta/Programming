@@ -20,3 +20,47 @@ Processing '/etc/joe/joerc'...
 Processing '/etc/joe/ftyperc'...
 Finished processing /etc/joe/ftyperc
 Finished processing /etc/joe/joerc
+
+*** These modified files were found in JOE when it aborted on Sun Mar 26 22:26:47 2017
+*** JOE was aborted by UNIX signal 1
+
+*** Файл '(БезИмени)'
+Lexem/
+lexprog
+file.txt
+python
+lab1.cpp
+lab1.txt
+lab1.cpp
+lab1.cpp
+d.cpp
+d.cpp
+final.txt
+
+*** Файл '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc
+
+*** These modified files were found in JOE when it aborted on Sun Mar 26 23:26:36 2017
+*** JOE was aborted because the terminal closed
+
+*** Файл '(БезИмени)'
+lexprog
+file.txt
+python
+lab1.cpp
+lab1.txt
+lab1.cpp
+lab1.cpp
+d.cpp
+d.cpp
+final.cpp
+final.txt
+
+*** Файл '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc

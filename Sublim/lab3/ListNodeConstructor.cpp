@@ -1,4 +1,4 @@
-#include "func.h"
+#include "HUFF.h"
 
 ListNode::ListNode(){
 	

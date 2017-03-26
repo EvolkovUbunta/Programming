@@ -1,7 +1,6 @@
-#include "func.h"
+#include "HUFF.h"
 
 void Huffman::Entering(ifstream & fin){
-	
 	unsigned char pstr;
 	fin.unsetf(std::ios::skipws);
 	fin >> pstr;
@@ -9,5 +8,4 @@ void Huffman::Entering(ifstream & fin){
 		entering[pstr]++;
 		fin >> pstr;
 	}
-
 }
