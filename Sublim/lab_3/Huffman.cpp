@@ -40,7 +40,7 @@ void Huffman::pac(ifstream & finI, ofstream & finO){
 				str1 = 0;
 				buf = 0;
 			}
-			buf = buf | ((CodeBit[k[s]].code & 0x80 >> str2) << str2) >> str1;
+			buf = buf | ((CodeBit[k[s]].code & (0x800000000000 >> str2)) ? 0x80 >> str1 : 0);
 			++str1;
 		}
 		finI >> s;

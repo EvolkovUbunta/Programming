@@ -13,9 +13,10 @@ class Huffman;
 
 class Code{
 public:
-	unsigned char code[32];
+	//unsigned char code;
+	uint64_t code; 
 	unsigned char size;
-	Code(uint32_t cod, unsigned char siz){
+	Code(uint64_t cod, unsigned char siz){
 		code = cod;
 		size = siz;
 	}

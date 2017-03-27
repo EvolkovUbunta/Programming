@@ -50,12 +50,13 @@ ListNode& ListNode::operator = (ListNode& ob) {
 
 }
 
-int ListNode::reCodFunc(Code bit, std::vector<Code>& CodeBit, unsigned char (&k)[256]){
+int ListNode::reCodFunc(Code bit, vector<Code>& CodeBit, unsigned char (&k)[256]){
 	if(entering == 0) {
 		return 1;
 	}
 	if (left == NULL && rigth == NULL) {
 		CodeBit.push_back (bit);
+		cout << bit.code << endl;
 		k[pstr] = CodeBit.size() - 1;
 		return 1;
 	}
@@ -64,7 +65,7 @@ int ListNode::reCodFunc(Code bit, std::vector<Code>& CodeBit, unsigned char (&k)
 		(*left).reCodFunc  (bit0, CodeBit, k);
 	}
 	if (rigth != NULL ) {
-		Code bit1 (bit.code| (0x80 >> bit.size), bit.size + 1);
+		Code bit1 (bit.code| (0x800000000000 >> bit.size), bit.size + 1);
 		(*rigth).reCodFunc (bit1, CodeBit, k);
 	}
 }

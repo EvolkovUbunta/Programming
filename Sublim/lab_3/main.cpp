@@ -3,24 +3,34 @@
 using namespace std;
 
 int main(int argc, char *argv[]){
+	if (argc < 4) {
+		cout << " Too few arguments!!!" << endl;
+		return 1;
+	}
 	Huffman stream;
-	ifstream finI("file.txt");
+	ifstream finI(argv[1]);
 	finI.unsetf (std::ios::skipws);
-	ofstream finO("result.txt");
+	ofstream finO(argv[2]);
 	if (!finI){
 		return 1;
 	}
-	cout << "WORK: func/run      >>>>>>>><<<<<<<" << endl;
-	stream.run(finI,finO);	
+	if (argv[3][0] != '-') {
+		cout << "Invalid input" << endl;
+		return 1;
+	}
+	if (argv[3][1] == 'p') {
+		cout << "Start pack" << endl;
+		cout << "WORK: func/run      >>>>>>>><<<<<<<" << endl;
+		stream.run(finI,finO);	
+	}
+
+	if (argv[3][1] == 'u') {
+		cout << "Start unpack" << endl;
+		cout << "WORK: func/UnPac    >>>>>>>><<<<<<<" << endl;
+		stream.unPac(finI,finO);
+	}
 	finI.close();
 	finO.close();
-	ifstream fin_I("result.txt");
-	fin_I.unsetf (std::ios::skipws);
-	ofstream fin_O("final_file.txt");
-	cout << "WORK: func/UnPac    >>>>>>>><<<<<<<" << endl;
-	stream.unPac(fin_I,fin_O);
-	fin_I.close();
-	fin_O.close();
 	cout << "WORK: FINISH/FILE   >>>>>>>><<<<<<<" << endl;
 	cout << "                    *file.txt" << endl;
 	cout << "                    *result.txt" << endl;
