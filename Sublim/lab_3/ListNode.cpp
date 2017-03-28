@@ -56,7 +56,6 @@ int ListNode::reCodFunc(Code bit, vector<Code>& CodeBit, unsigned char (&k)[256]
 	}
 	if (left == NULL && rigth == NULL) {
 		CodeBit.push_back (bit);
-		cout << bit.code << endl;
 		k[pstr] = CodeBit.size() - 1;
 		return 1;
 	}
