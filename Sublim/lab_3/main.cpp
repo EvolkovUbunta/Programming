@@ -21,19 +21,17 @@ int main(int argc, char *argv[]){
 	if (argv[3][1] == 'p') {
 		cout << "Start pack" << endl;
 		cout << "WORK: func/run      >>>>>>>><<<<<<<" << endl;
+		cout << "                    *"<< argv[2] << endl;
 		stream.run(finI,finO);	
 	}
 
 	if (argv[3][1] == 'u') {
 		cout << "Start unpack" << endl;
 		cout << "WORK: func/UnPac    >>>>>>>><<<<<<<" << endl;
+		cout << "                    *"<< argv[2] << endl;
 		stream.unPac(finI,finO);
 	}
 	finI.close();
 	finO.close();
-	cout << "WORK: FINISH/FILE   >>>>>>>><<<<<<<" << endl;
-	cout << "                    *file.txt" << endl;
-	cout << "                    *result.txt" << endl;
-	cout << "                    *final_file.txt" << endl; 
 	return 0;
 }

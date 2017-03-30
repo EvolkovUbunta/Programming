@@ -4,8 +4,8 @@ ListNode::ListNode(){
 	
 	pstr = 0;
 	entering = 0;
-	left = NULL;
-	rigth = NULL;
+	//left = NULL;
+	//rigth = NULL;
 
 }
 
@@ -13,7 +13,8 @@ ListNode::ListNode(unsigned char P, uint32_t E){
 	
 	pstr = P;
 	entering = E;
-	left = rigth = NULL;
+	left = NULL;
+	rigth = NULL;
 
 }
 

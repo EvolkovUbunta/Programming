@@ -2,7 +2,6 @@
 #include <fstream>
 #include <inttypes.h>
 #include <iomanip>
-#include <math.h>
 #include <list>
 #include <vector>
 #include <map>
@@ -13,7 +12,6 @@ class Huffman;
 
 class Code{
 public:
-	//unsigned char code;
 	uint64_t code; 
 	unsigned char size;
 	Code(uint64_t cod, unsigned char siz){
@@ -48,11 +46,11 @@ class Huffman{
 	ListNode *big;
 public:
 	Huffman();
-	void run(ifstream & finI, ofstream & finO);
 	void enteriing(ifstream & fin);
 	void tree();
 	void pac(ifstream & finI, ofstream & finO);
 	int unPac(ifstream & fin_I, ofstream & fin_O);
 	list <ListNode>::iterator min (std::list <ListNode> &list);
+	void run(ifstream & finI, ofstream & finO);
 };
 
