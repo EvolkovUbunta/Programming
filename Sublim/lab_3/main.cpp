@@ -19,16 +19,12 @@ int main(int argc, char *argv[]){
 		return 1;
 	}
 	if (argv[3][1] == 'p') {
-		cout << "Start pack" << endl;
-		cout << "WORK: func/run      >>>>>>>><<<<<<<" << endl;
-		cout << "                    *"<< argv[2] << endl;
+		cout << "WORK: func/run   | " << argv[1] << " -> " << argv[2]<< endl;
 		stream.run(finI,finO);	
 	}
 
 	if (argv[3][1] == 'u') {
-		cout << "Start unpack" << endl;
-		cout << "WORK: func/UnPac    >>>>>>>><<<<<<<" << endl;
-		cout << "                    *"<< argv[2] << endl;
+		cout << "WORK: func/UnPac | "<< argv[1] << " -> " << argv[2] << endl;
 		stream.unPac(finI,finO);
 	}
 	finI.close();
