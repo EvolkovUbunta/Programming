@@ -74,9 +74,11 @@ public:
 			for(int i=0;i<128;++i){
 				if(mass[i]>mass[popular]){
 					popular = i;
+				}
 				
 			}
 		}
+		cout <<(unsigned int) popular << endl;
 		fin_i.close();
 	}
 	/**
@@ -128,6 +130,7 @@ public:
 		unsigned char r=popular;
 		unsigned char array[6];
 		unsigned char array1[6][6];
+		cout << charset_definition(r|0x80) << endl;
 		if(charset_definition(r|0x80)!=0) {
 			cout << "\t\t\t\t\tFile correct." << endl;
 			file_encoding(); 
